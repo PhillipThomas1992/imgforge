@@ -441,40 +441,6 @@ Follow the interactive prompts to configure and build your image.
 
 ---
 
-## 🔧 API Reference
-
-The backend exposes the following REST API endpoints:
-
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| `/api/health` | GET | Health check |
-| `/api/devices` | GET | List removable devices |
-| `/api/build` | POST | Start a build job |
-| `/api/flash` | POST | Flash image to device |
-| `/api/jobs` | GET | List all jobs |
-| `/api/jobs/:id` | GET | Get job status |
-| `/api/upload` | POST | Upload files |
-| `/api/ws/:job_id` | WS | WebSocket for build logs |
-
-**Example API Call:**
-```bash
-curl -X POST http://localhost:3000/api/build \
-  -H "Content-Type: application/json" \
-  -d '{
-    "hostname": "mypi",
-    "board_type": "raspberrypi",
-    "mode": "artifact",
-    "enable_ssh": true,
-    "wifi_ssid": "MyNetwork",
-    "wifi_password": "password123",
-    "preset_image": "raspberrypi_lite",
-    "expand_image": true,
-    "extra_size": "+2G"
-  }'
-```
-
----
-
 ## 🛠️ Makefile Commands
 
 Use the included Makefile for common tasks:
@@ -500,81 +466,6 @@ make format         # Format code
 # Utilities
 make health         # Check service health
 make devices        # List available devices
-```
-
----
-
-## 🏗️ Project Structure
-
-```
-imgforge/
-├── backend/               # Rust/Axum backend
-│   ├── src/
-│   │   └── main.rs       # API server & build orchestration
-│   └── Cargo.toml        # Rust dependencies
-├── frontend/             # Next.js/React frontend
-│   ├── app/
-│   │   ├── page.tsx      # Main UI
-│   │   └── globals.css   # Styles
-│   ├── components/ui/    # Shadcn UI components
-│   └── public/
-│       └── imgforge.png  # Logo
-├── imgforge.sh          # Core bash script for image manipulation
-├── Dockerfile           # Multi-stage Docker build
-├── docker-compose.yml   # Docker Compose configuration
-├── Makefile            # Convenience commands
-└── README.md           # This file
-```
-
----
-
-## 📡 Configuration Examples
-
-### Wi-Fi Configuration
-
-Wi-Fi is configured by writing `/etc/wpa_supplicant/wpa_supplicant.conf` inside the image:
-
-```conf
-ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
-update_config=1
-country=US
-
-network={
-    ssid="YourSSID"
-    psk="YourPassword"
-    key_mgmt=WPA-PSK
-}
-```
-
-### Docker Compose Example
-
-Add a docker-compose.yml to your image:
-
-```yaml
-version: '3'
-services:
-  web:
-    image: nginx:latest
-    ports:
-      - "80:80"
-
-  app:
-    image: node:20-alpine
-    volumes:
-      - ./app:/app
-    working_dir: /app
-    command: npm start
-```
-
-### Custom Install Script
-
-Add a bash script to run inside the image:
-
-```bash
-#!/bin/bash
-apt-get update
-apt-get install -y vim git htop
-systemctl enable docker
 ```
 
 ---
@@ -633,16 +524,6 @@ ports:
 
 ---
 
-## 🔒 Security Considerations
-
-- **Privileged Mode**: Required for device access and image manipulation
-- **Device Access**: Full `/dev` access needed for SD card flashing
-- **Passwords**: Avoid committing config files with passwords
-- **Production**: Use HTTPS and authentication when exposing to network
-- **Firewall**: Restrict access to trusted networks only
-
----
-
 ## 📝 License
 
 See [LICENSE](LICENSE) file for details.
@@ -666,5 +547,3 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 For issues and questions, please use the GitHub issue tracker.
 
 ---
-
-<p align="center">Made with ❤️ for the embedded Linux community</p>
