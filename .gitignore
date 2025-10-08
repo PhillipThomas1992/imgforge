@@ -1,0 +1,102 @@
+# Node.js
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/build/
+frontend/dist/
+frontend/.pnp
+frontend/.pnp.js
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+frontend/.npm
+frontend/.eslintcache
+frontend/.yarn/cache
+frontend/.yarn/unplugged
+frontend/.yarn/build-state.yml
+frontend/.yarn/install-state.gz
+
+# Rust
+backend/target/
+backend/Cargo.lock
+backend/**/*.rs.bk
+backend/.cargo/
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.env
+
+# Build artifacts and images
+output/
+config/
+*.img
+*.img.xz
+*.zip
+*.tar.gz
+*.tar.xz
+base.img
+custom.img
+rpi-os.zip
+last-run.env
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*~
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+.project
+.classpath
+.settings/
+*.sublime-project
+*.sublime-workspace
+
+# Docker
+.dockerignore
+
+# Temporary files
+tmp/
+temp/
+.cache/
+.tmp/
+*.tmp
+
+# Testing
+coverage/
+.nyc_output/
+*.test.local
+
+# Uploads
+uploads/
+/tmp/imgforge-uploads/
+
+# Build tools
+.pnp.*
+.yarn-integrity
+
+# Miscellaneous
+*.bak
+*.orig
+*.rej
+.~lock.*

@@ -1,0 +1,25 @@
+[package]
+name = "imgforge-backend"
+version = "1.0.0"
+edition = "2021"
+
+[dependencies]
+axum = { version = "0.7", features = ["ws", "multipart"] }
+tokio = { version = "1.40", features = ["full"] }
+tower = { version = "0.5", features = ["util"] }
+tower-http = { version = "0.6", features = ["fs", "cors", "trace"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+uuid = { version = "1.11", features = ["v4", "serde"] }
+chrono = { version = "0.4", features = ["serde"] }
+tokio-util = { version = "0.7", features = ["io"] }
+futures = "0.3"
+thiserror = "1.0"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+strip = true
